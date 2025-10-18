@@ -15,7 +15,7 @@ const config = merge(common, {
         // 热加载
         hot: true,
         // host 地址，设置成 0.0.0.0 才能在移动端使用 ip 地址访问到
-        host: '0.0.0.0',
+        host: '192.168.43.167',
         // 端口号
         port: 8000,
         historyApiFallback: true,

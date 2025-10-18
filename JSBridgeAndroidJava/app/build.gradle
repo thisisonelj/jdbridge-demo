@@ -17,9 +17,9 @@ android {
         }
         repositories {
             // ...
-            maven { url "https://jitpack.io" }
         }
     }
+    namespace "com.beichen.jsbridgeandroidjava"
 }
 
 dependencies {

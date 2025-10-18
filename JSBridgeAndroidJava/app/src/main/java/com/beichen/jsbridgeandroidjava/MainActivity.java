@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private BridgeWebView mWebView;
     // URL 网络请求地址
     // TODO: 请替换成页面的 url 地址
-    private static final String URL = "http://xxx.xxx.xxx.xxx:xxxx/";
+    private static final String URL = "http://192.168.43.167:8000/";
 
     long exitTime = 0;
     private TextView mTvUser;
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_init:
+            case 1000001:
                 // 调用 H5 界面的默认接收函数
                 mWebView.send("安卓传递给 JS 的消息", new CallBackFunction() {
                     @Override
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
                 break;
-            case R.id.btn_name:
+            case 1000002:
                 // 调用 H5 界面的 changeName 事件函数
                 mWebView.callHandler("changeName", mEditName.getText().toString(), new CallBackFunction() {
                     @Override
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
                 break;
-            case R.id.btn_cookie:
+            case 1000003:
                 syncCookie(this, URL, "token=" + mEditCookie.getText().toString());
                 // 调用 H5 界面的 syncCookie 事件函数
                 mWebView.callHandler("syncCookie", "", new CallBackFunction() {
