@@ -124,38 +124,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case 1000001:
-                // 调用 H5 界面的默认接收函数
-                mWebView.send("安卓传递给 JS 的消息", new CallBackFunction() {
-                    @Override
-                    public void onCallBack(String data) {
-                        Toast.makeText(MainActivity.this, data, Toast.LENGTH_LONG).show();
-                    }
-                });
-                break;
-            case 1000002:
-                // 调用 H5 界面的 changeName 事件函数
-                mWebView.callHandler("changeName", mEditName.getText().toString(), new CallBackFunction() {
-                    @Override
-                    public void onCallBack(String data) {
-                        Toast.makeText(MainActivity.this, "name 修改成功", Toast.LENGTH_SHORT).show();
-                        mEditName.setText("");
-                    }
-                });
-                break;
-            case 1000003:
-                syncCookie(this, URL, "token=" + mEditCookie.getText().toString());
-                // 调用 H5 界面的 syncCookie 事件函数
-                mWebView.callHandler("syncCookie", "", new CallBackFunction() {
-                    @Override
-                    public void onCallBack(String data) {
-                        Toast.makeText(MainActivity.this, "Cookie 同步成功", Toast.LENGTH_SHORT).show();
-                        mEditCookie.setText("");
-                    }
-                });
-                break;
-        }
+      if(v.getId() == R.id.btn_init) {
+          // 调用 H5 界面的默认接收函数
+          mWebView.send("安卓传递给 JS 的消息", new CallBackFunction() {
+              @Override
+              public void onCallBack(String data) {
+                  Toast.makeText(MainActivity.this, data, Toast.LENGTH_LONG).show();
+              }
+          });
+      }else if(v.getId() == R.id.btn_name) {
+          // 调用 H5 界面的 changeName 事件函数
+          mWebView.callHandler("changeName", mEditName.getText().toString(), new CallBackFunction() {
+              @Override
+              public void onCallBack(String data) {
+                  Toast.makeText(MainActivity.this, "name 修改成功", Toast.LENGTH_SHORT).show();
+                  mEditName.setText("");
+              }
+          });
+      }else if(v.getId() == R.id.btn_cookie) {
+          syncCookie(this, URL, "token=" + mEditCookie.getText().toString());
+          // 调用 H5 界面的 syncCookie 事件函数
+          mWebView.callHandler("syncCookie", "", new CallBackFunction() {
+              @Override
+              public void onCallBack(String data) {
+                  Toast.makeText(MainActivity.this, "Cookie 同步成功", Toast.LENGTH_SHORT).show();
+                  mEditCookie.setText("");
+              }
+          });
+      }else {
+
+      }
     }
 
     @Override
